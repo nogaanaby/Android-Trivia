@@ -1,5 +1,5 @@
 package com.example.trivia;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,11 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 import com.example.trivia.Question;
 import com.example.trivia.QuestionsData;
+import com.example.trivia.ScoreBoard;
 
 public class MainActivity extends AppCompatActivity {
 
     private List<Question> questionList;
     private int currentQuestionIndex = 0;
+    private int score = 0;
 
     private TextView questionTextView;
     private RadioGroup optionsGroup;
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         Question currentQuestion = questionList.get(currentQuestionIndex);
 
         if (selectedOptionIndex == currentQuestion.getCorrectAnswerIndex()) {
+            score++;
             Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Incorrect!", Toast.LENGTH_SHORT).show();
@@ -73,7 +76,11 @@ public class MainActivity extends AppCompatActivity {
         if (currentQuestionIndex < questionList.size()) {
             displayQuestion();
         } else {
-            Toast.makeText(this, "Quiz Finished!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, ScoreBoard.class);
+            intent.putExtra("SCORE", score);
+            intent.putExtra("TOTAL_QUESTIONS", questionList.size());
+            startActivity(intent);
+            finish();
         }
     }
 }
