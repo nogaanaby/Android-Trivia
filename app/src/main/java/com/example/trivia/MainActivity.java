@@ -54,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayQuestion() {
         Question currentQuestion = questionList.get(currentQuestionIndex);
+
+        optionsGroup.clearCheck();
+
         questionTextView.setText(currentQuestion.getQuestionText());
         option1.setText(currentQuestion.getOptions()[0]);
         option2.setText(currentQuestion.getOptions()[1]);
