@@ -6,8 +6,9 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <string name="game_title">Trivia</string>
-    <string name="game_start">Game Start</string>
+    <string name="game_title">Harry Potter Trivia</string>
+    <string name="game_start">Let the Magic Begin</string>
+
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

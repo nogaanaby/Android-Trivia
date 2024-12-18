@@ -70,9 +70,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (selectedOptionIndex == currentQuestion.getCorrectAnswerIndex()) {
             score++;
-            Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Excellent! 10 points for Gryffindor!", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Incorrect!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Magic takes time, try again!", Toast.LENGTH_SHORT).show();
         }
 
         currentQuestionIndex++;
