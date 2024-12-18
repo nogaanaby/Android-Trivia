@@ -6,14 +6,11 @@
     android:padding="16dp"
     android:background="@color/beige">
 
-    <TextView
-        android:id="@+id/game_title"
+    <ImageView
+        android:id="@+id/game_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/game_title"
-        android:textSize="32sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:src="@drawable/game_logo"
         android:layout_marginBottom="16dp"/>
 
     <Button
