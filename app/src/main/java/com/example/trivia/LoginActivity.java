@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         //dummy create user:
-        dbHelper.addUser("noga", "1234");
+        //dbHelper.addUser("root", "1234");
 
         EditText usernameEditText = findViewById(R.id.username);
         EditText passwordEditText = findViewById(R.id.password);

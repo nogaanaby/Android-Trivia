@@ -45,10 +45,6 @@ public class MainActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
         userId = getIntent().getIntExtra("USER_ID", -1);
 
-        // Insert test data into the database
-        dbHelper.addQuestion("What is the capital of France?", "Paris", "London", "Berlin", "Madrid", 0);
-
-
         questionList = dbHelper.getAllQuestions();
         displayQuestion();
 
@@ -91,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("SCORE", score);
             intent.putExtra("TOTAL_QUESTIONS", questionList.size());
             intent.putExtra("USER_ID", userId);
-            startActivity(intent);
             dbHelper.addScore(userId, score, LocalDateTime.now().toString());
+            startActivity(intent);
             finish();
         }
     }

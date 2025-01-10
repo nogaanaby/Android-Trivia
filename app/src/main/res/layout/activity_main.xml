@@ -11,7 +11,7 @@
         android:id="@+id/question_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Question"
+        android:text="@string/question"
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="22sp"
@@ -28,28 +28,28 @@
             android:id="@+id/option1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Option 1"
+            android:text="@string/option1"
             android:textSize="16.5sp"/>
 
         <RadioButton
             android:id="@+id/option2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Option 2"
+            android:text="@string/option2"
             android:textSize="16.5sp"/>
 
         <RadioButton
             android:id="@+id/option3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Option 3"
+            android:text="@string/option3"
             android:textSize="16.5sp"/>
 
         <RadioButton
             android:id="@+id/option4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Option 4"
+            android:text="@string/option4"
             android:textSize="16.5sp"/>
     </RadioGroup>
 
@@ -57,7 +57,7 @@
         android:id="@+id/submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:text="@string/submit"
         android:backgroundTint="@color/deep_teal"
         android:textColor="@color/white"
         android:layout_margin="16dp" />

@@ -140,6 +140,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return questionList;
     }
 
+    public void clearQuestionsTable() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_QUESTIONS);
+        db.close();
+    }
+
     public void addScore(int userId, int score, String date) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -150,8 +156,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public Cursor getLastScore(int userId) {
+    public int getLastScore(int userId) {
+        int lastScore = -1;
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.query(TABLE_SCORES, null, COLUMN_USER_ID_FK + "=?", new String[]{String.valueOf(userId)}, null, null, COLUMN_DATE + " DESC", "1");
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_SCORE + " FROM " + TABLE_SCORES + " WHERE " + COLUMN_USER_ID_FK + " = ? ORDER BY " + COLUMN_DATE + " DESC LIMIT 1", new String[]{String.valueOf(userId)});
+
+        if (cursor != null && cursor.moveToFirst()) {
+            int scoreColumnIndex = cursor.getColumnIndex(COLUMN_SCORE);
+            if (scoreColumnIndex != -1) {
+                lastScore = cursor.getInt(scoreColumnIndex);
+            }
+            cursor.close();
+        }
+        return lastScore;
     }
+
 }

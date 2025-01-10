@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.time.LocalDateTime;
+
 public class ScoreBoard extends AppCompatActivity {
 
     private DatabaseHelper dbHelper;
@@ -26,13 +28,14 @@ public class ScoreBoard extends AppCompatActivity {
         // get the user
         userId = getIntent().getIntExtra("USER_ID", -1);
 
-
         TextView scoreTextView = findViewById(R.id.score_text);
         Button retryButton = findViewById(R.id.retry_button);
         Button homeButton = findViewById(R.id.home_button);
 
-        int score = getIntent().getIntExtra("SCORE", 0);
+//        int score = getIntent().getIntExtra("SCORE", 0);
+        int score = dbHelper.getLastScore(userId);
         int totalQuestions = getIntent().getIntExtra("TOTAL_QUESTIONS", 0);
+
 
         scoreTextView.setText("Your score: " + score + "/" + totalQuestions);
 

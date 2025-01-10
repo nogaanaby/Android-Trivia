@@ -1,3 +1,5 @@
+<!-- File: app/src/main/res/layout/activity_home.xml -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,6 +15,14 @@
         android:src="@drawable/game_logo"
         android:layout_marginBottom="16dp"/>
 
+    <TextView
+        android:id="@+id/last_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/last_score"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"/>
+
     <Button
         android:id="@+id/start_button"
         android:layout_width="wrap_content"
@@ -22,6 +32,4 @@
         android:textColor="@color/white"
         android:padding="12dp"
         android:layout_marginBottom="16dp"/>
-
-
 </LinearLayout>
