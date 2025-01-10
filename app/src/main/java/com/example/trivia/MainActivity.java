@@ -7,13 +7,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.time.LocalDateTime;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 import com.example.trivia.Question;
-import com.example.trivia.QuestionsData;
 import com.example.trivia.ScoreBoard;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,11 +21,13 @@ public class MainActivity extends AppCompatActivity {
     private List<Question> questionList;
     private int currentQuestionIndex = 0;
     private int score = 0;
+    private int userId;
 
     private TextView questionTextView;
     private RadioGroup optionsGroup;
     private RadioButton option1, option2, option3, option4;
     private Button submitButton;
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +42,14 @@ public class MainActivity extends AppCompatActivity {
         option4 = findViewById(R.id.option4);
         submitButton = findViewById(R.id.submit_button);
 
-        questionList = QuestionsData.getQuestions();
+        dbHelper = new DatabaseHelper(this);
+        userId = getIntent().getIntExtra("USER_ID", -1);
 
+        // Insert test data into the database
+        dbHelper.addQuestion("What is the capital of France?", "Paris", "London", "Berlin", "Madrid", 0);
+
+
+        questionList = dbHelper.getAllQuestions();
         displayQuestion();
 
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -82,8 +90,17 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, ScoreBoard.class);
             intent.putExtra("SCORE", score);
             intent.putExtra("TOTAL_QUESTIONS", questionList.size());
+            intent.putExtra("USER_ID", userId);
             startActivity(intent);
+            dbHelper.addScore(userId, score, LocalDateTime.now().toString());
             finish();
         }
     }
 }
+
+
+//
+//int userId = 1; // Replace with actual user ID
+//int score = 10; // Replace with actual score
+//String date = "2023-10-10 10:00:00"; // Replace with actual date
+//dbHelper.addScore(userId, score, date);

@@ -23,3 +23,5 @@ public class Question {
         return correctAnswerIndex;
     }
 }
+
+//dbHelper.addQuestion("What is the capital of France?", "Paris", "London", "Berlin", "Madrid", 0);
