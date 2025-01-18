@@ -25,13 +25,17 @@ public class HomeActivity extends AppCompatActivity {
         }
         int lastScore = dbHelper.getLastScore(userId);
         TextView last_scoreTextView = findViewById(R.id.last_score);
-        last_scoreTextView.setText("Last Score: " + lastScore);
-
+        if(lastScore==-1){
+            last_scoreTextView.setText("No previous score");
+        }else {
+            last_scoreTextView.setText("Last Score: " + lastScore);
+        }
         Button startButton = findViewById(R.id.start_button);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                intent.putExtra("USER_ID", userId);
                 startActivity(intent);
             }
         });
